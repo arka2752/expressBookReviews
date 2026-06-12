@@ -44,7 +44,7 @@ regd_users.post("/login", (req, res) => {
     req.session.authorization = {
       accessToken, username
     }
-    return res.status(200).json({ message: "User successfully logged in", token: accessToken });
+    return res.status(200).json({ message: "Login successful!", token: accessToken });
   } else {
     return res.status(208).json({ message: "Invalid Login. Check username and password" });
   }
@@ -75,7 +75,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
   let filtered_review = books[isbn]["reviews"];
   if (filtered_review[reviewer]) {
     delete filtered_review[reviewer];
-    res.send(`Reviews for the ISBN  ${isbn} posted by the user ${reviewer} deleted.`);
+    res.json({ message: `Review for ISBN ${isbn} posted by ${reviewer} has been deleted.` });
   }
   else {
     res.send("Can't delete, as this review has been posted by a different user or does not exist.");
