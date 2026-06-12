@@ -75,7 +75,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
   let filtered_review = books[isbn]["reviews"];
   if (filtered_review[reviewer]) {
     delete filtered_review[reviewer];
-    res.json({ message: `Review for ISBN ${isbn} posted by ${reviewer} has been deleted.` });
+    res.json({ message: "Review successfully deleted" });
   }
   else {
     res.send("Can't delete, as this review has been posted by a different user or does not exist.");
